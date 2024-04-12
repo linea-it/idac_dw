@@ -30,13 +30,19 @@ Instructions where this dataset is:
 
 ## Download and ingestion details
 
-*If necessary you can more information in this section like source, tools used to download, md5sum, etc*
+*If necessary you can add more information in this section eg.:source url, tools used to download, md5sum, etc*
 
 | Action | Time  |
 |---|---|
 | Download | xx:xx:xx |
 | Ingestion | xx:xx:xx |
-| Indexing* | xx:xx:xx |
+| Indexing* | xx:xx:xx | 
+
+| Others | -  |
+|---|---|
+| Number of rows | nnnn | 
+| Number of columns | nnnn | 
+
 
 \* time to indexing 12 columns including `ra` and `dec` with spatial q3c index.
 
