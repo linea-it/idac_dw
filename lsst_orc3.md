@@ -1,4 +1,4 @@
-# Title (nome do survey - release) 
+# LSST - Operations Rehearsal for Commissioning #3 
 
 Contents:
 
@@ -20,7 +20,7 @@ introductory paragraph / general description (here you can have links to the off
 _parágrafo introdutório / descrição geral  (aqui pode ter links para a documentação oficial no corpo do texto – lista de links no final, na seção Reference)_   
 
 
-## How to Acess 
+## How to Access 
 
 [EN]
 
