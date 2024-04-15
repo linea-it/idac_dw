@@ -47,3 +47,9 @@ Instructions where this dataset is:
 \* time to indexing 12 columns including `ra` and `dec` with spatial q3c index.
 
 Here you can add more information about the process of download and ingestion and how they were done, eg: scripts, commands, etc. The scripts can be added in the idac_dw repository.
+
+## Reference
+
+- link 1
+- link 2
+- link 3
