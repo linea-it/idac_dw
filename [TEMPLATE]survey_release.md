@@ -113,7 +113,10 @@ descrição
 Here you can add more information about the process of download and ingestion and how they were done, eg: scripts, commands, etc. The scripts can be added in the idac_dw repository.
 
 ## Reference 
-      *
-      *
-      * 
+
 lista de links para documentação oficial e outras fontes de informação relevantes 
+
+- ref 1
+- ref 2
+- ref 3
+
