@@ -30,7 +30,7 @@ Instructions where this dataset is:
 
 ## Download and ingestion details
 
-*If necessary you can add more information in this section eg.:source url, tools used to download, md5sum, etc*
+*If necessary you can add more information in this section eg.: who, when, number of the ticket, source url, tools used to download, md5sum, etc*
 
 | Action | Time  |
 |---|---|
