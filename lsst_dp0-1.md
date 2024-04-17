@@ -1,62 +1,66 @@
-# Title (nome do survey - release) 
+# LSST - DP0.1 
 
-Contents:
+Contents / Conteúdo:
 
-- [Introduction](#introduction)
-- [How to access](#how-to-access)
+- [Introduction / _Introdução_](#introduction)
+- [How to Access / _Como acessar_](#how-to-access)
 - [Dataset information](#dataset-information)
 - [Technical information](#technical-information)
 - [Reference](#reference)
 
 
-## Introduction
+## Introduction / _Introdução_
 
 [EN]
 
-introductory paragraph / general description (here you can have links to the official documentation in the body of the text – list of links at the end, in the Reference section)
+LSST Data Preview 0.1 was the first dataset released by the LSST DM to test the Rubin Science Platform (RSP) in an early stage of development. It was created based on simulated data provided by the Dark Energy Science Collaboration (LSST-DESC).  
 
-[PT-BR]
+**DP0.1 Release Date:** June 30, 2021
 
-_parágrafo introdutório / descrição geral  (aqui pode ter links para a documentação oficial no corpo do texto – lista de links no final, na seção Reference)_   
+**DP0.1 Documentation Page:** [https://dp0-1.lsst.io/](https://dp0-1.lsst.io/) 
+
+_[PT-BR]_
+
+_LSST Data Preview 0.1 foi o primeiro conjunto de dados liberado pelo LSST DM para testar o Rubin Science Platform (RSP), ainda em estágio inicial de desenvolvimento. O conjunto foi criado a partir de dados simulados fornecidos pela Dark Energy Science Collaboration (LSST-DESC)._
+
+_**Data de lançamento do DP0.1:** 30 de junho de 2021_
+
+_**Página de documentação DP0.1:** [https://dp0-1.lsst.io/](https://dp0-1.lsst.io/)_ 
 
 
-## How to Access 
+## How to Access / _Como acessar_
+
+
+#### Eligibility / _Elegibilidade_
 
 [EN]
 
-eligibility - public? members?  (highlighted - tag)
+Private data available only to the LSST collaboration members.  
 
-Access instructions
+_[PT-BR]_
 
-- path for the files
-- the format of the files
-- the name of the database, schema and table and how to access these data. Include some examples of queries.
-- examples of how to read the data in both formats: file and table
-- examples of using different applications to read the data
-  - jupyter (e.g., using dblinea) 
-  - cluster apollo
-  - etc
-    
-[PT-BR]   
+_Dados privados disponíveis apenas para membros da colaboração LSST._
 
-_elegibilidade - público? membros?  (com destaque - tag)_
 
-_instruções para acesso (...)_
+#### Access instructions / Instruções de acesso
+
+TBD
+
+Path to release directory: `/lustre/t1/cl/lsst/dp0.1` 
 
   
 ## Dataset information 
 
-index of data products belonging to the release, e.g. images, catalogs, maps, etc.
 
-### Data Product 1 
+### Object Catalog  
 
 [EN]
 
 description  
 
-[PT-BR]   
+_[PT-BR]_  
 
-descrição  
+_descrição_   
 
 Exemplo para dados tabulares: 
 
@@ -67,32 +71,23 @@ Exemplo para dados tabulares:
 |   |   |   |
 
 
-### Data Product 2 
+### Truth Tables  
 
 [EN]
 
 description  
 
-[PT-BR]   
+_[PT-BR]_  
 
-descrição  
+_descrição_   
 
 …
-
-### Data Product N
-
-[EN]
-
-description  
-
-[PT-BR]   
-
-descrição  
-    
 
 ## Technical information
 
 ### Download and ingestion details
+
+TBD 
 
 *If necessary you can add more information in this section eg.: who, when, number of the ticket, source url, tools used to download, md5sum, etc*
 
