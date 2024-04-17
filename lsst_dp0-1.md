@@ -1,87 +1,74 @@
 # LSST - DP0.1 
 
-Contents / Conteúdo:
+LSST Data Preview 0.1 was the first dataset released by the LSST DM to test the Rubin Science Platform (RSP) in an early stage of development. It was created based on simulated data provided by the Dark Energy Science Collaboration (LSST-DESC).
 
-- [Introduction / _Introdução_](#introduction)
-- [How to Access / _Como acessar_](#how-to-access)
-- [Dataset information](#dataset-information)
-- [Technical information](#technical-information)
-- [Reference](#reference)
+_LSST Data Preview 0.1 foi o primeiro conjunto de dados liberado pelo LSST DM para testar o Rubin Science Platform (RSP), ainda em estágio inicial de desenvolvimento. O conjunto foi criado a partir de dados simulados fornecidos pela Dark Energy Science Collaboration (LSST-DESC)._
 
 
-## Introduction / _Introdução_
-
-[EN]
-
-LSST Data Preview 0.1 was the first dataset released by the LSST DM to test the Rubin Science Platform (RSP) in an early stage of development. It was created based on simulated data provided by the Dark Energy Science Collaboration (LSST-DESC).  
 
 **DP0.1 Release Date:** June 30, 2021
 
 **DP0.1 Documentation Page:** [https://dp0-1.lsst.io/](https://dp0-1.lsst.io/) 
 
-_[PT-BR]_
+## Eligibility 
 
-_LSST Data Preview 0.1 foi o primeiro conjunto de dados liberado pelo LSST DM para testar o Rubin Science Platform (RSP), ainda em estágio inicial de desenvolvimento. O conjunto foi criado a partir de dados simulados fornecidos pela Dark Energy Science Collaboration (LSST-DESC)._
-
-_**Data de lançamento do DP0.1:** 30 de junho de 2021_
-
-_**Página de documentação DP0.1:** [https://dp0-1.lsst.io/](https://dp0-1.lsst.io/)_ 
-
-
-## How to Access / _Como acessar_
-
-
-#### Eligibility / _Elegibilidade_
-
-[EN]
 
 Private data available only to the LSST collaboration members.  
-
-_[PT-BR]_
 
 _Dados privados disponíveis apenas para membros da colaboração LSST._
 
 
-#### Access instructions / Instruções de acesso
+## How to Access 
 
-TBD
+TBD - examples 
 
 Path to release directory: `/lustre/t1/cl/lsst/dp0.1` 
 
   
 ## Dataset information 
 
-
 ### Object Catalog  
 
-[EN]
+Path: `/lustre/t1/cl/lsst/dp0.1/primary/catalogs/object/` 
 
-description  
+| Data product  | Object catalog  |
+|---|---|
+| Number of files | 166 | 
+| Number of rows | nnnn | 
+| Extended sources | ~ 144 M |
+| Point sources | ~ 33 M |
+| Number of columns | nnnn | 
+| Size | 2.3 TB | 
+| Area | 300 sq. deg | 
 
-_[PT-BR]_  
 
-_descrição_   
+### DPDD Tables 
 
-Exemplo para dados tabulares: 
-
-| Column  | Data Type  | Description  |
-|---|---|---|
-| colA | bigint  | Lorem ipsilum  |
-| colB | bool    | Lorem ipsilum  |
-|   |   |   |
-
+| Data product  | DPDD Tables |
+|---|---|
+| Number of files | 166 | 
+| Number of rows | nnnn | 
+| Extended sources | ~ 144 M |
+| Point sources | ~ 33 M |
+| Number of columns | nnnn | 
+| Size | 118 GB | 
+| Area | 300 sq. deg | 
 
 ### Truth Tables  
 
-[EN]
+Path: `/lustre/t1/cl/lsst/dp0.1/primary/catalogs/truth/` 
 
-description  
+| Data product  | Truth Tables |
+|---|---|
+| Number of files | 166 | 
+| Number of rows | nnnn | 
+| Galaxies | ~ 759 million |
+| Stars | ~ 5 million |
+| Supernova | ~ 0.5 million |
+| Number of columns | nnnn | 
+| Size | 63 GB | 
+| Area | 300 sq. deg | 
 
-_[PT-BR]_  
-
-_descrição_   
-
-…
 
 ## Technical information
 
@@ -99,8 +86,13 @@ TBD
 
 | Others | -  |
 |---|---|
+| Number of files | 498 | 
 | Number of rows | nnnn | 
 | Number of columns | nnnn | 
+| Total size | 2.5 TB | 
+| Total area | 300 sq. deg | 
+
+
 
 
 \* time to indexing 12 columns including `ra` and `dec` with spatial q3c index.
@@ -109,8 +101,6 @@ Here you can add more information about the process of download and ingestion an
 
 ## Reference 
 
-lista de links para documentação oficial e outras fontes de informação relevantes 
+- [DP0.1 Documentation Page](https://dp0-1.lsst.io/) 
+- [DESC DC2 Release Note](https://ui.adsabs.harvard.edu/abs/2021arXiv210104855L/abstract)
 
-- ref 1
-- ref 2
-- ref 3
