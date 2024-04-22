@@ -25,6 +25,7 @@ Instructions where this dataset is:
 |---|---|---|
 | colA | bigint  | Lorem ipsilum  |
 | colB | bool  | Lorem ipsilum  |
+| colC | bool  | Lorem ipsilum  |
 |   |   |   |
 
 
