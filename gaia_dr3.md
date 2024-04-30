@@ -125,7 +125,7 @@ plt.tight_layout()
 plt.show()
 </code></pre>
 
-### Search and Analysis of Overdensity in the Proper Motion Diagram (VPD:
+### Search and Analysis of Overdensity in the Vector Point Diagram (VPD) of the Proper Motions:
 
 Here is an example code for searching and analyzing a region in space where the density of objects is higher than the expected average density. Overdensities may indicate star clusters, galaxy groups, or other cosmic structures. The method used for this calculation is ‘gaussian_kde’ (Kernel Density Estimation), which is a technique used to estimate the probability density of a random variable. It works by smoothing the data, creating a “cloud” of Gaussian distributions centered around each data point. These Gaussian distributions are then summed to obtain a smooth estimate of the probability density function.
 
@@ -351,7 +351,7 @@ The following table provides a description of the columns in Gaia DR3, including
 
 
 [PT-BR]   
-A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seus data types associados.
+A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seus tipos de dados ssociados.
 
 | Coluna                   | Tipo de Dados | Descrição                                                                                        |
 |--------------------------|---------------|--------------------------------------------------------------------------------------------------|
