@@ -1,4 +1,4 @@
-# Dark Energy Survey Data Release 2
+# Dark Energy Survey - Data Release 2 (DES DR2)
 
 Contents:
 
@@ -16,12 +16,9 @@ O Dark Energy Survey Data Release 2 (DES DR2) é um amplo levantamento de imagen
 
 Para atender aos objetivos científicos, a Colaboração DES desenvolveu e empregou a Dark Energy Camera (DECam), uma câmera de 570 megapixels com um campo de visão de 3 graus quadrados. Esta câmera foi instalada no topo do telescópio Blanco de 4 metros, localizado no Observatório Interamericano Cerro Tololo (CTIO), situada no norte do Chile.
 
-
-O DES DR2 abrange aproximadamente 691 milhões de objetos astronômicos distintos, identificados em 10.169 blocos de imagens codificadas, cada um com uma área de 0,534 graus quadrados, derivadas de um total de 76.217 imagens de época única. A precisão fotométrica é de cerca de 10 milimagnitude, e a precisão astrométrica interna média é de aproximadamente 27 milissegundo de arco. Para informações,consulte o documentação oficial [aqui](https://datalab.noirlab.edu/des/)
+O DES DR2 abrange aproximadamente 691 milhões de objetos astronômicos distintos, identificados em 10.169 imagens coadicionadas, cada um com uma área de 0,534 graus quadrados, derivadas de um total de 76.217 exposições. A precisão fotométrica é de cerca de 10 milimagnitudes, e a precisão astrométrica interna média é de aproximadamente 27 milissegundos de arco. Para mais informações, consulte o documentação oficial [aqui](https://datalab.noirlab.edu/des/)
 
 ## Como acessar
-
-Os dados do DES DR2 podem ser acessados site http://docs.linea.org.br/ na seção "Dados".
 
 O <a href="https://www2.linea.org.br/">LIneA</a> (Laboratório Interinstitucional de e-Astronomia) disponibiliza uma biblioteca Python chamada `dblinea` que permite acessar o banco de dados da própria instituição. Essa biblioteca é útil para recuperar dados dentro da plataforma <a href="https://jupyter.org/hub">JupyterHub</a>. Para utilizar essa bibilioteca é necessário ter o pacote dblinea instalado em seu ambiente Python. Para instalá-lo use o comando:
 
@@ -39,15 +36,26 @@ from dblinea import DBBase
 db.describe_table("dr2", schema = "des")
 </code></pre>
 
-Consulte a documentação oficial e completa no site: https://dblinea.readthedocs.io/en/latest/quickstart.html
+Os métodos `fetchall(query)`, `fetchall_dict(query)` e `fetchall_df(query)` fazem a consulta referente ao conteúdo atribuído ao argumento (no exemplo abaixo, à variável `query`, uma string com um comando SQL) no banco de dados e retornam os dados, respectivamente, nos formatos: lista de tuplas, dicionário, objeto do tipo pandas.DataFrame. Por exemplo, vamos consultar o identificador único e as coordenadas dos objetos nas 10 primeiras linhas da tabela:
 
+```python
+query = "SELECT coadd_object_id, ra, dec FROM des_dr2.coadd_objects limit 10"
+dataframe_10_objetos = db.fetchall_df(query)
+```
 
- 
+Alguns exemplos de como utilizar a biblioteca dblinea para buscar objedos em uma dada região do céu estão presentes no _Jupyter notebook_ tutorial `2-acesso-a-dados.ipynb` disponível no repositório GitHub jupyterhub-tutorial. Para acessar o notebook, uma vez logado no LIneA JupyterHub, clone o repositório de tutoriais. No terminal do Jupyter Lab, execute:
+
+```bash
+$ git clone https://github.com/linea-it/jupyterhub-tutorial.git
+```
+
+A documentação oficial e completa da biblioteca `dblinea` está no site: https://dblinea.readthedocs.io/en/latest/quickstart.html
+
 ## Informação dos Dados
 
-O Dark Energy Survey Data Release 2 é composto por diversas tabelas com 215 colunas e mais de 600 mil linhas. Além disso, foram criados 2 índices utilizando o índice espacial q3c. Esses índices estão associados a campos essenciais, como:
-- `R.A`
-- `Decl.`
+O Dark Energy Survey Data Release 2 é composto por diversas tabelas com 215 colunas e mais de 600 milhões de linhas. Além disso, foram criados 2 índices utilizando o índice espacial q3c. Esses índices estão associados a campos essenciais, como:
+- `RA`
+- `DEC`
 
 ### DES DR2 Main
 
@@ -63,7 +71,7 @@ A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, junt
 | BWIN_IMAGE_G,R,I,Z,Y | Float | X-centroide das medidas em janela na imagem de banda coadicionada para o eixo menor [pixel] | 5 |
 | COADD_OBJECT_ID | Bigint | Identificador único para os objetos coadicionados | 1 |
 | CLASS_STAR_G,R,I,Z,Y | Float |Classificador de fonte estendida morfológica simples. Valores entre 0 (galáxias) e 1 (estrelas). | 5 |
-| Decl. * | Double | Declinação, com precisão quantizada para indexação (DELTAWIN_J2000 tem precisão total, mas não é indexada) [deg] | 1 |
+| DEC* | Double | Declinação, com precisão quantizada para indexação (DELTAWIN_J2000 tem precisão total, mas não é indexada) [deg] | 1 |
 | DELTAWIN_J2000 | Double| decl. para o objeto, J2000 no sistema ICRS (precisão total mas não indexada) [deg] |1 |
 | EBV_SFD98                | Double | Coeficiente de avermelhamento E(B-V) de Schlegel, Finkbeiner & Davis, 1998 [mag] | 1 |
 | ERRA_IMAGE | Float | Incerteza no tamanho do eixo principal, a partir do modelo isofotal [pixel] |
@@ -94,7 +102,7 @@ A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, junt
 | MAGERR_AUTO_G,R,I,Z,Y | Float | Incerteza na estimativa de magnitude, para um modelo elíptico baseado no raio de Kron [mag] | 5 |
 | NEPOCHS_G,R,I,Z,Y  | Integer | Número de épocas em que a fonte é detectada em imagens de época única | 5 |
 | NITER_MODEL_G,R,I,Z,Y | Integer | Número de iterações em medições fotométricas de ajuste de modelo | 5 |
-| R.A. * | Double | Ascensão reta, com precisão quantizada para indexação (ALPHAWIN_J2000 tem precisão total mas não indexada) [deg] | 1 |
+| RA* | Double | Ascensão reta, com precisão quantizada para indexação (ALPHAWIN_J2000 tem precisão total mas não indexada) [deg] | 1 |
 | SPREAD_MODEL_G,R,I,Z,Y | Float | Classificador morfológico baseado na comparação entre o modelo PSF versus exponencial-PSF. Valores mais próximos de 0 correspondem a estrelas, valores maiores correspondem a galáxias | 5 |
 | SPREADERR_MODEL_G,R,I,Z,Y | Float | Incerteza no classificador morfológico baseado na comparação entre o modelo PSF versus exponencial-PSF | 5 |
 | THETAWIN_IMAGE_G,R,I,Z,Y | Float | Ângulo de posição (theta) para a fonte, para medição em janela convergida crescente de x para y [deg] |  5 |
@@ -138,7 +146,7 @@ As tabelas abaixo exibem o tempo dedicado à criação de índices para a tabela
 
 | Índices | Tempo  |       
 |---|---|
-| `R.A` e `Decl.` | 1037 minutos | 
+| `RA` e `DEC` | 1037 minutos | 
 
 <br>
 
@@ -151,8 +159,6 @@ As tabelas abaixo exibem o tempo dedicado à criação de índices para a tabela
 
 ## Referências
 
-https://datalab.noirlab.edu/des/
-
-https://dblinea.readthedocs.io/en/latest/quickstart.html
-
-https://arxiv.org/abs/2101.05765
+- https://datalab.noirlab.edu/des/
+- https://dblinea.readthedocs.io/en/latest/quickstart.html
+- https://arxiv.org/abs/2101.05765
