@@ -12,7 +12,7 @@ Contents:
 ## Introdução
 
 
-O Dark Energy Survey Data Release 2 (DES DR2) é um amplo levantamento de imagens terrestres abrangendo uma área de aproximadamente 5000 graus quadrados do céu do hemisfério sul da Via Láctea, do espectro visível e do infravermelho próximo, em cinco bandas fotométricas amplas: grizY. O principal objetivo do DES é aprimorar nossa compreensão da aceleração cósmica e da natureza da energia escura. 
+O Dark Energy Survey Data Release 2 (DES DR2) é um amplo levantamento de imagens astronômicas feitas por telescópios em solo abrangendo uma área de aproximadamente 5000 graus quadrados do céu do hemisfério sul da Via Láctea, do espectro visível e do infravermelho próximo, em cinco bandas fotométricas amplas: grizY. O principal objetivo do DES é aprimorar nossa compreensão da aceleração cósmica e da natureza da energia escura. 
 
 Para atender aos objetivos científicos, a Colaboração DES desenvolveu e empregou a Dark Energy Camera (DECam), uma câmera de 570 megapixels com um campo de visão de 3 graus quadrados. Esta câmera foi instalada no topo do telescópio Blanco de 4 metros, localizado no Observatório Interamericano Cerro Tololo (CTIO), situada no norte do Chile.
 
