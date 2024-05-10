@@ -17,8 +17,6 @@ Gaia DR3 utiliza três bandas fotométricas para medir as magnitudes das fontes:
 
 ## Como Acessar
 
-Os dados do Gaia DR3 podem ser acessados site http://docs.linea.org.br/ na seção "Dados".
-
 O <a href="https://www2.linea.org.br/">LIneA</a> (Laboratório Interinstitucional de e-Astronomia) disponibiliza uma biblioteca Python chamada `dblinea` que permite acessar o banco de dados da própria instituição. Essa biblioteca é útil para recuperar dados dentro da plataforma <a href="https://jupyter.org/hub">JupyterHub</a>. Para utilizar essa bibilioteca é necessário ter o pacote dblinea instalado em seu ambiente Python. Para instalá-lo use o comando:
 
 <pre><code>pip install dblinea</code></pre>
@@ -35,7 +33,20 @@ from dblinea import DBBase
 db.describe_table("dr3", schema = "gaia")
 </code></pre>
 
-Consulte a documentação oficial e completa no site: https://dblinea.readthedocs.io/en/latest/quickstart.html
+Os métodos `fetchall(query)`, `fetchall_dict(query)` e `fetchall_df(query)` fazem a consulta referente ao conteúdo atribuído ao argumento (no exemplo abaixo, à variável `query`, uma string com um comando SQL) no banco de dados e retornam os dados, respectivamente, nos formatos: lista de tuplas, dicionário, objeto do tipo pandas.DataFrame. Por exemplo, vamos consultar o identificador único e as coordenadas dos objetos nas 10 primeiras linhas da tabela:
+
+```python
+query = "SELECT coadd_object_id, ra, dec FROM des_dr2.coadd_objects limit 10"
+dataframe_10_objetos = db.fetchall_df(query)
+```
+
+Alguns exemplos de como utilizar a biblioteca dblinea para buscar objedos em uma dada região do céu estão presentes no _Jupyter notebook_ tutorial `2-acesso-a-dados.ipynb` disponível no repositório GitHub jupyterhub-tutorial. Para acessar o notebook, uma vez logado no LIneA JupyterHub, clone o repositório de tutoriais. No terminal do Jupyter Lab, execute:
+
+```bash
+$ git clone https://github.com/linea-it/jupyterhub-tutorial.git
+```
+
+A documentação oficial e completa da biblioteca `dblinea` está no site: https://dblinea.readthedocs.io/en/latest/quickstart.html
 
 
 ## Exemplos
@@ -54,8 +65,8 @@ table_name = "dr3"
 schema_name = "gaia"
 
 # Buscar dados da tabela especificada
-query = f"SELECT ra, dec, phot_bp_mean_mag, phot_rp_mean_mag, phot_g_mean_mag, pmra, pmdec, parallax FROM {schema_name}.{table_name}"
-data = db.execute(query)
+query = f"SELECT ra, dec, phot_bp_mean_mag, phot_rp_mean_mag, phot_g_mean_mag, pmra, pmdec, parallax FROM {schema_name}.{table_name} limit 10000"
+data = db.fetchall_df(query)
 
 # Criar subplots
 fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10,  10))
@@ -89,47 +100,6 @@ plt.tight_layout()
 plt.show()
 </code></pre>
 
-### Procura e Análise da Superdensidade no Diagrama VPD
-
-Aqui está um exemplo de código para pesquisar e analisar uma região no espaço onde a densidade dos objetos é maior que a densidade média esperada. Densidades excessivas podem indicar aglomerados de estrelas, grupos de galáxias ou outras estruturas cósmicas. O método utilizado para este cálculo é ‘gaussian_kde’ (Kernel Density Estimation), que é uma técnica utilizada para estimar a densidade de probabilidade de uma variável aleatória. Funciona suavizando os dados, criando uma “nuvem” de distribuições gaussianas centradas em cada ponto de dados. Essas distribuições gaussianas são então somadas para obter uma estimativa suave da função de densidade de probabilidade.
-
-<pre><code>import numpy as np
-import matplotlib.pyplot as plt
-from scipy.stats import gaussian_kde
-from dblinea import DBBase  # Supondo que você tenha o pacote dblinea instalado
-
-# Cria uma instância do DBBase
-db = DBBase()
-
-# Especifique o nome da tabela e o schema
-table_name = "dr3"
-schema_name = "gaia"
-
-# Buscar dados da tabela especificada
-query = f"SELECT pmra, pmdec FROM {schema_name}.{table_name}"
-data = db.execute(query)
-
-# Calcule a densidade de dados usando o método Kernel Density Estimation
-kde = gaussian_kde(data.T) 
-
-# Gere uma matriz de valores para o gráfico de densidade
-pmra_values = np.linspace(data[:, 0].min(), data[:, 0].max(), 100)
-pmdec_values = np.linspace(data[:, 1].min(), data[:, 1].max(), 100)
-pmra_grid, pmdec_grid = np.meshgrid(pmra_values, pmdec_values)
-coords = np.vstack([pmra_grid.ravel(), pmdec_grid.ravel()])
-density_values = kde(coords).reshape(pmra_grid.shape)
-
-# Crie o gráfico de sobredensidade
-plt.figure(figsize=(10, 6))
-plt.imshow(density_values.T, origin='lower', aspect='auto', cmap='viridis',
-           extent=(pmra_values.min(), pmra_values.max(), pmdec_values.min(), pmdec_values.max()))
-plt.colorbar(label='Density')
-plt.xlabel('Proper Motion in RA')
-plt.ylabel('Proper Motion in DEC')
-plt.title('Overdensity in Proper Motion Diagram (VPD)')
-plt.show()
-</code></pre>
-  
   
 ## Informação dos Dados 
 
