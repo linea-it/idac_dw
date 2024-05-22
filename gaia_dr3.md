@@ -107,7 +107,7 @@ plt.show()
 ### Gaia Source
 
 
-A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seus data types associados. As colunas negrito foram indexadas.
+A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seus data types associados. As colunas em negrito foram indexadas.
 
 | Coluna                   | Tipo de Dados | Descrição                                                                                        |
 |--------------------------|---------------|--------------------------------------------------------------------------------------------------|
