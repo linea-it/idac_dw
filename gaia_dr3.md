@@ -27,7 +27,7 @@ A conexão com o banco de dados é feita pela classe DBBase. Um exemplo de utili
 from dblinea import DBBase
   
 # Crie uma instância do DBBase. Essa instância será usada para se conectar ao banco de dados.
- db = DBBase()
+db = DBBase()
     
 # Descreve o nome e o tipo das colunas de uma tabela.
 db.describe_table("dr3", schema = "gaia")
@@ -36,7 +36,7 @@ db.describe_table("dr3", schema = "gaia")
 Os métodos `fetchall(query)`, `fetchall_dict(query)` e `fetchall_df(query)` fazem a consulta referente ao conteúdo atribuído ao argumento (no exemplo abaixo, à variável `query`, uma string com um comando SQL) no banco de dados e retornam os dados, respectivamente, nos formatos: lista de tuplas, dicionário, objeto do tipo pandas.DataFrame. Por exemplo, vamos consultar o identificador único e as coordenadas dos objetos nas 10 primeiras linhas da tabela:
 
 ```python
-query = "SELECT coadd_object_id, ra, dec FROM des_dr2.coadd_objects limit 10"
+query = "SELECT source_id, ra, ra_error, dec, dec_error, phot_g_mean_flux, phot_g_mean_flux_error, phot_g_mean_mag FROM gaia.dr3 limit 10"
 dataframe_10_objetos = db.fetchall_df(query)
 ```
 
