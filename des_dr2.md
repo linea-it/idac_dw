@@ -30,7 +30,7 @@ A conexão com o banco de dados é feita pela classe DBBase. Um exemplo de utili
 from dblinea import DBBase
   
 # Crie uma instância do DBBase. Essa instância será usada para se conectar ao banco de dados.
- db = DBBase()
+db = DBBase()
     
 # Descreve o nome e o tipo das colunas de uma tabela.
 db.describe_table("dr2", schema = "des")
@@ -53,13 +53,10 @@ A documentação oficial e completa da biblioteca `dblinea` está no site: https
 
 ## Informação dos Dados
 
-O Dark Energy Survey Data Release 2 é composto por diversas tabelas com 215 colunas e mais de 600 milhões de linhas. Além disso, foram criados 2 índices utilizando o índice espacial q3c. Esses índices estão associados a campos essenciais, como:
-- `RA`
-- `DEC`
 
 ### DES DR2 Main
 
-A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, juntamente com seus tipos de dados associados. É importante observar que a terceira coluna desta tabela especifica o número de colunas associadas a cada elemento. Por exemplo, para FLAGS_G,R,I,Z,Y, existem cinco colunas associadas: FLAGS_G, FLAGS_R, FLAGS_I, FLAGS_Z e FLAGS_Y.
+A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, juntamente com seus tipos de dados associados. É importante observar que a terceira coluna desta tabela especifica o número de colunas associadas a cada elemento. Por exemplo, para FLAGS_G,R,I,Z,Y, existem cinco colunas associadas: FLAGS_G, FLAGS_R, FLAGS_I, FLAGS_Z e FLAGS_Y. Todas as colunas foram indexadas.
 
 | Nome da Coluna | Tipo de Dados | Descrição | Colunas |
 |---|---|---|---|
@@ -71,10 +68,10 @@ A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, junt
 | BWIN_IMAGE_G,R,I,Z,Y | Float | X-centroide das medidas em janela na imagem de banda coadicionada para o eixo menor [pixel] | 5 |
 | COADD_OBJECT_ID | Bigint | Identificador único para os objetos coadicionados | 1 |
 | CLASS_STAR_G,R,I,Z,Y | Float |Classificador de fonte estendida morfológica simples. Valores entre 0 (galáxias) e 1 (estrelas). | 5 |
-| DEC* | Double | Declinação, com precisão quantizada para indexação (DELTAWIN_J2000 tem precisão total, mas não é indexada) [deg] | 1 |
+| DEC | Double | Declinação, com precisão quantizada para indexação (DELTAWIN_J2000 tem precisão total, mas não é indexada) [deg] | 1 |
 | DELTAWIN_J2000 | Double| decl. para o objeto, J2000 no sistema ICRS (precisão total mas não indexada) [deg] |1 |
 | EBV_SFD98                | Double | Coeficiente de avermelhamento E(B-V) de Schlegel, Finkbeiner & Davis, 1998 [mag] | 1 |
-| ERRA_IMAGE | Float | Incerteza no tamanho do eixo principal, a partir do modelo isofotal [pixel] |
+| ERRA_IMAGE | Float | Incerteza no tamanho do eixo principal, a partir do modelo isofotal [pixel] | 1 |
 | ERRAWIN_IMAGE_G,R,I,Z,Y | Float | Incerteza no tamanho do eixo principal, a partir de medições em janelas convergentes, assumindo ruído não correlacionado [pixel] | 5 |
 | ERRB_IMAGE | Float | Incerteza no tamanho do eixo menor, do modelo isofotal [pixel] | 1 |
 | ERRBWIN_IMAGE_G,R,I,Z,Y | Float | Incerteza no X-centroide das medidas em janela na imagem de banda coadicionada para o eixo menor [pixel] | 5 | 
@@ -102,7 +99,7 @@ A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, junt
 | MAGERR_AUTO_G,R,I,Z,Y | Float | Incerteza na estimativa de magnitude, para um modelo elíptico baseado no raio de Kron [mag] | 5 |
 | NEPOCHS_G,R,I,Z,Y  | Integer | Número de épocas em que a fonte é detectada em imagens de época única | 5 |
 | NITER_MODEL_G,R,I,Z,Y | Integer | Número de iterações em medições fotométricas de ajuste de modelo | 5 |
-| RA* | Double | Ascensão reta, com precisão quantizada para indexação (ALPHAWIN_J2000 tem precisão total mas não indexada) [deg] | 1 |
+| RA | Double | Ascensão reta, com precisão quantizada para indexação (ALPHAWIN_J2000 tem precisão total mas não indexada) [deg] | 1 |
 | SPREAD_MODEL_G,R,I,Z,Y | Float | Classificador morfológico baseado na comparação entre o modelo PSF versus exponencial-PSF. Valores mais próximos de 0 correspondem a estrelas, valores maiores correspondem a galáxias | 5 |
 | SPREADERR_MODEL_G,R,I,Z,Y | Float | Incerteza no classificador morfológico baseado na comparação entre o modelo PSF versus exponencial-PSF | 5 |
 | THETAWIN_IMAGE_G,R,I,Z,Y | Float | Ângulo de posição (theta) para a fonte, para medição em janela convergida crescente de x para y [deg] |  5 |
@@ -122,8 +119,6 @@ A tabela abaixo fornece uma descrição das colunas encontradas no DES DR2, junt
 | Y2WIN_IMAGE_G,R,I,Z,Y |  Double | Segundo momento na direção y, das medidas convergidas em janela [pixel2] | 5 |
 | YWIN_IMAGE |  Double | Y-centroide das medidas em janela na imagem coadicionada [pixel] | 1 |
 | YWIN_IMAGE_G,R,I,Z,Y |  Double | Y-centroide das medidas em janela na imagem de banda coadicionada [pixel] | 5 |
-
-\* Colunas indexadas    
 
 ## Informação Técnicas
 
