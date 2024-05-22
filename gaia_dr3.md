@@ -103,44 +103,30 @@ plt.show()
   
 ## Informação dos Dados 
 
-O Gaia Data Release 3 (DR3) é composto por diversas tabelas com 152 colunas e mais de 500 mil linhas. Além disso, foram criados 11 índices utilizando o índice espacial q3c. Esses índices estão associados a campos essenciais, como:
-- `source_id`
-- `ra`
-- `dec`
-- `phot_g_mean_mag`
-- `parallax`
-- `pm`
-- `pmra`
-- `pmdec`
-- `duplicated_source`
-- `phot_g_mean_flux`
-- `phot_variable_flag`
-
-
 
 ### Gaia Source
 
 
-A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seus data types associados.
+A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seus data types associados. As colunas negrito foram indexadas.
 
 | Coluna                   | Tipo de Dados | Descrição                                                                                        |
 |--------------------------|---------------|--------------------------------------------------------------------------------------------------|
 | SOLUTION_ID              | int8          | Identificador da Solução                                                                        |
 | DESIGNATION              | varchar(255)  | Designação única da fonte (única em todas as Liberações de Dados)                                |
-| SOURCE_ID *              | int8          | Identificador único da fonte (único dentro de uma determinada Liberação de Dados)                |
+| **SOURCE_ID**              | int8          | Identificador único da fonte (único dentro de uma determinada Liberação de Dados)                |
 | RANDOM_INDEX             | int8          | Índice aleatório para uso ao selecionar subconjuntos                                              |
 | REF_EPOCH                | float8        | Época de referência (Tempo [Anos Julianos])                                                       |
-| RA *                     | float8        | Ascensão reta (Ângulo [graus])                                                                   |
+| **RA**                     | float8        | Ascensão reta (Ângulo [graus])                                                                   |
 | RA_ERROR                 | float4        | Erro padrão da ascensão reta (Ângulo [milissegundos de arco])                                     |
-| DEC *                    | float8        | Declinação (Ângulo [graus])                                                               |
+| **DEC**                    | float8        | Declinação (Ângulo [graus])                                                               |
 | DEC_ERROR                | float4        | Erro padrão da declinação (Ângulo [milissegundos de arco])                                        |
-| PARALLAX *               | float8        | Paralaxe (Ângulo [milissegundos de arco])                                                        |
+| **PARALLAX**               | float8        | Paralaxe (Ângulo [milissegundos de arco])                                                        |
 | PARALLAX_ERROR           | float4        | Erro padrão da paralaxe (Ângulo [milissegundos de arco])                                          |
 | PARALLAX_OVER_ERROR      | float4        | Paralaxe dividida pelo seu erro padrão                                                           |
-| PM *                     | float4        | Movimento próprio total (Velocidade Angular [milissegundos de arco/ano])                          |
-| PMRA *                   | float8        | Movimento próprio na direção da ascensão reta (Velocidade Angular [milissegundos de arco/ano])   |
+| **PM**                     | float4        | Movimento próprio total (Velocidade Angular [milissegundos de arco/ano])                          |
+| **PMRA**                   | float8        | Movimento próprio na direção da ascensão reta (Velocidade Angular [milissegundos de arco/ano])   |
 | PMRA_ERROR               | float4        | Erro padrão do movimento próprio na direção da ascensão reta (Velocidade Angular [milissegundos de arco/ano]) |
-| PMDEC *                  | float8        | Movimento próprio na direção da declinação (Velocidade Angular [milissegundos de arco/ano])      |
+| **PMDEC**                  | float8        | Movimento próprio na direção da declinação (Velocidade Angular [milissegundos de arco/ano])      |
 | PMDEC_ERROR                     | float4       | Erro padrão do movimento próprio na direção da declinação (Velocidade Angular[mas/ano])             |
 | RA_DEC_CORR                     | float4       | Correlação entre ascensão reta e declinação (Adimensional)                                         |
 | RA_PARALLAX_CORR                | float4       | Correlação entre ascensão reta e paralaxe (Adimensional)                                            |
@@ -189,12 +175,22 @@ A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seu
 | SCAN_DIRECTION_MEAN_K2           | float4 | Ângulo médio de posição das direções de escaneamento em torno da fonte (Ângulo[graus])                  |
 | SCAN_DIRECTION_MEAN_K3           | float4 | Ângulo médio de posição das direções de escaneamento em torno da fonte (Ângulo[graus])                  |
 | SCAN_DIRECTION_MEAN_K4           | float4 | Ângulo médio de posição das direções de escaneamento em torno da fonte (Ângulo[graus])                  |
-| DUPLICATED_SOURCE *              | bool   | Fonte com múltiplos identificadores de fonte                                                              |
+| **DUPLICATED_SOURCE**               | bool   | Fonte com múltiplos identificadores de fonte                                                              |
 | PHOT_G_N_OBS                     | int2   | Número de observações que contribuem para a fotometria G                                                 |
-| PHOT_G_MEAN_FLUX *               | float8 | Fluxo médio na banda G (Fluxo[e<sup>-</sup> s<sup>-1</sup>])                                                                  |
+| **PHOT_G_MEAN_FLUX**               | float8 | Fluxo médio na banda G (Fluxo[e<sup>-</sup> s<sup>-1</sup>])                                                                  |
 | PHOT_G_MEAN_FLUX_ERROR           | float4 | Erro no fluxo médio na banda G (Fluxo[e<sup>-</sup> s<sup>-1</sup>])                                                         |
 | PHOT_G_MEAN_FLUX_OVER_ERROR      | float4 | Fluxo médio na banda G dividido pelo seu erro                                                             |
-| PHOT_RP_MEAN_MAG                        | float4 | Magnitude média integrada RP (Magnitude[mag])               |
+| **PHOT_G_MEAN_MAG**                       | float4 | Magnitude média da banda G               |
+| PHOT_BP_N_OBS                      | int2 | Número de observações que contribuem para a fotometria BP |
+| PHOT_BP_MEAN_FLUX                  | float8 | Fluxo médio de BP integrado |
+| PHOT_BP_MEAN_FLUX_ERROR            | float4 | Erro no fluxo médio integrado BP |
+| PHOT_BP_MEAN_FLUX_OVER_ERROR       | float4 | Fluxo médio BP integrado dividido pelo seu erro |
+| PHOT_BP_MEAN_MAG                   | float4 | Magnitude média da BP integrada |
+| PHOT_RP_N_OBS                      | int2 | Número de observações que contribuem para a fotometria RP |
+| PHOT_RP_MEAN_FLUX                  | float8 | Fluxo médio de RP integrado |
+| PHOT_RP_MEAN_FLUX_ERROR            | float4 | Erro no fluxo médio integrado RP |
+| PHOT_RP_MEAN_FLUX_OVER_ERROR       | float4 | Fluxo médio RP integrado dividido pelo seu erro |
+| PHOT_RP_MEAN_MAG                   | float4 | Magnitude média da RP integrada |
 | PHOT_BP_RP_EXCESS_FACTOR                | float4 | Fator de excesso BP/RP                                     |
 | PHOT_BP_N_CONTAMINATED_TRANSITS         | int2   | Número de trânsitos contaminados BP                        |
 | PHOT_BP_N_BLENDED_TRANSITS              | int2   | Número de trânsitos mesclados BP                           |
@@ -226,7 +222,7 @@ A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seu
 | GRVS_MAG_ERROR                               | float4 | Incerteza na magnitude G<sub>RVS</sub> (Magnitude[mag])                      |
 | GRVS_MAG_NB_TRANSITS                         | int2   | Número de trânsitos usados para calcular G<sub>RVS</sub>                     |
 | RVS_SPEC_SIG_TO_NOISE                        | float4 | Relação sinal-ruído no espectro médio do RVS                                            |
-| PHOT_VARIABLE_FLAG *                        | varchar(255) | Sinalizador de variabilidade fotométrica                         |
+| **PHOT_VARIABLE_FLAG**                        | varchar(255) | Sinalizador de variabilidade fotométrica                         |
 | L                                            | float8 | Longitude galáctica (Ângulo[graus])                               |
 | B                                            | float8 | Latitude galáctica (Ângulo[graus])                                |
 | ECL_LON                                      | float8 | Longitude eclíptica (Ângulo[graus])                                 |
@@ -268,7 +264,6 @@ A tabela a seguir fornece uma descrição das colunas no Gaia DR3, incluindo seu
 | EBPMINRP_GSPPHOT_UPPER                       | float4 | Nível de confiança superior (84%) do vermelhamento E(G<sub>BP</sub> - G<sub>RP</sub> ) do melhor conjunto de bibliotecas do GSP-Phot usando espectros BP/RP (Magnitude[mag]) |
 | LIBNAME_GSPPHOT                              | varchar(255) | Nome da biblioteca que alcança o maior log-posterior médio nas amostras MCMC e foi usada para derivar os parâmetros GSP-Phot nesta tabela |
 
-\* Colunas indexadas
 
 
 ## Informação Técnicas
