@@ -32,13 +32,13 @@ from dblinea import DBBase
 db = DBBase()
     
 # Descreve o nome e o tipo das colunas de uma tabela.
-db.describe_table("dr", schema = "2mass")
+db.describe_table("dr1", schema = "2mass")
 </code></pre>
 
 Os métodos `fetchall(query)`, `fetchall_dict(query)` e `fetchall_df(query)` fazem a consulta referente ao conteúdo atribuído ao argumento (no exemplo abaixo, à variável `query`, uma string com um comando SQL) no banco de dados e retornam os dados, respectivamente, nos formatos: lista de tuplas, dicionário, objeto do tipo pandas.DataFrame. Por exemplo, vamos consultar o identificador único e as coordenadas dos objetos nas 10 primeiras linhas da tabela:
 
 ```python
-query = "SELECT coadd_object_id, ra, dec FROM des_dr2.coadd_objects limit 10"
+query = "SELECT coadd_object_id, ra, dec FROM 2mass_dr1.coadd_objects limit 10"
 dataframe_10_objetos = db.fetchall_df(query)
 ```
 
@@ -60,36 +60,37 @@ O projeto 2MASS resultou na criação de um Catálogo de Fontes Pontuais com 470
 | Column Name      | Datatype             | Description                                                                                      |
 |------------------|----------------------|--------------------------------------------------------------------------------------------------|
 | `ra`             | float                | Ascensão reta J2000 em relação ao ICRS (em graus).                                               |
-| `dec/decl`       | float                | Declinação J2000 em relação ao ICRS (em graus).                                                  |
+| `dec`       | float                | Declinação J2000 em relação ao ICRS (em graus).                                                  |
 | `err_maj`        | float                | Comprimento do semi-eixo maior da elipse de incerteza de posição de um sigma (em segundos de arco).           |
 | `err_min`        | float                | Comprimento do semi-eixo menor da elipse de incerteza de posição de um sigma (em segundos de arco).           |
 | `err_ang`        | float                | Ângulo de posição no céu do semieixo maior da elipse de incerteza de posição (Leste do Norte) |
-| `designation`    | string               | Nome da fonte baseado na posição equatorial sexagesimal (por exemplo, "2MASS Jhhmmssss + ddmmsss [ABC...]"). |
-| `j_m`            | float                | Magnitude padrão da banda J (ou limite superior de confiança a 95% se a fonte não for detectada na banda J). |
-| `j_cmsig`        | float                | Incerteza da magnitude J na banda J (em milissegundos de arco).                                   |
-| `j_msigcom`      | float                | Incerteza fotométrica corrigida para a magnitude padrão da banda J. (em milissegundos de arco).                         |
-| `j_snr`          | float                | Relação sinal-ruído da detecção na banda J.                                                       |
-| `h_m`            | float                | Magnitude padrão na banda H.                                                                      |
-| `h_cmsig`        | float                | Incerteza da magnitude H na banda H (em milissegundos de arco).                                   |
-| `h_snr`          | float                | Relação sinal-ruído da detecção na banda H.                                                       |
-| `k_m`            | float                | Magnitude padrão na banda K.                                                                      |
-| `k_cmsig`        | float                | Incerteza da magnitude K na banda K (em milissegundos de arco).                                   |
-| `k_msigcom`      | float                | Incerteza combinada da magnitude K na banda K (em milissegundos de arco).                         |
-| `k_snr`          | float                | Relação sinal-ruído da detecção na banda K.                                                       |
-| `ph_qual`        | string               | Qualidade fotométrica da detecção (por exemplo, "AAA", "AB", "BC", etc.).                         |
+| `designation`    | string               | Nome da fonte baseado na posição equatorial sexagesimal (por exemplo, "hhmmssss+ddmmsss[ABC...]"). |
+| `j_m`            | float                | Magnitude padrão da banda J (ou limite superior de confiança a 95% se a fonte não for detectada na banda J) |
+| `j_cmsig`        | float                | Incerteza fotométrica corrigida para a magnitude padrão da banda J (em milissegundos de arco).                                   |
+| `j_msigcom`      | float                | Incerteza fotométrica combinada ou total para a magnitude padrão da banda J (em milissegundos de arco).                         |
+| `j_snr`          | float                | Relação sinal-ruído de "varredura (scan)" da banda J.                                                       |
+| `h_m`            | float                | Magnitude padrão da banda H (ou limite superior de confiança a 95% se a fonte não for detectada na banda H).                                                                      |
+| `h_cmsig`        | float                | Incerteza fotométrica corrigida para a magnitude padrão da banda H (em milissegundos de arco).                                   |
+| `h_msigcom`      | float                | Incerteza fotométrica combinada ou total para a magnitude padrão da banda H (em milissegundos de arco).                         |
+| `h_snr`          | float                | Relação sinal-ruído de "varredura (scan)" da banda H.                                                        |
+| `k_m`            | float                | Magnitude padrão na banda K<sub>s</sub>.                                                                      |
+| `k_cmsig`        | float                | Incerteza fotométrica corrigida para a magnitude padrão da banda K<sub>s</sub> (em milissegundos de arco).                       |
+| `k_msigcom`      | float                | Incerteza fotométrica combinada ou total para a magnitude padrão da banda K<sub>s</sub> (em milissegundos de arco).                        |
+| `k_snr`          | float                | Relação sinal-ruído de "varredura (scan)" da banda K<sub>s</sub>.                                                         |
+| `ph_qual`        | string               | Flag de qualidade fotométrica.                         |
 | `rd_flg`         | string               | Flag de confiabilidade da detecção (por exemplo, "1", "2", "3", etc.).                            |
 | `bl_flg`         | string               | Flag de contaminação por fontes brilhantes (por exemplo, "0", "1", "2", etc.).                    |
 | `cc_flg`         | string               | Flag de confiabilidade cruzada (por exemplo, "0", "1", "2", etc.).                                |
-| `ndet`           | int                  | Número de detecções na banda K.                                                                   |
-| `prox`           | float                | Distância angular até a fonte mais próxima no catálogo 2MASS (em segundos de arco).               |
+| `ndet`           | int                  | Estatísticas de detecção de frames.                                                                   |
+| `prox`           | float                | Proximidade. A distância entre esta fonte e seu vizinho mais próximo no PSC (em segundos de arco).               |
 | `pxpa`           | float                | Ângulo de posição entre a fonte e a fonte mais próxima no catálogo 2MASS (em graus).              |
-| `pxcntr`         | int                  | Índice da fonte mais próxima no catálogo 2MASS.                                                   |
-| `gal_contam`     | string               | Flag de contaminação por fontes galácticas (por exemplo, "0", "1", "2", etc.).                    |
-| `mp_flg`         | string               | Flag de qualidade do ponto de origem (0 = melhor qualidade, 1 = qualidade inferior, etc.)         |
+| `pxcntr`         | int                  | O valor pts_key da fonte mais próxima no PSC.                                                   |
+| `gal_contam`     | string               | Sinalizador de "contaminação" de fonte estendida. (por exemplo, "0", "1", "2", etc.).                    |
+| `mp_flg`         | string               | Indica se esta fonte está associada à posição prevista de um planeta menor conhecido, cometa, planeta ou satélite planetário.         |
 | `pts_key/cntr`   | int                  | Chave única para identificar cada fonte no catálogo                                               |
 | `hemis`          | string               | Hemisfério celeste (Norte ou Sul)                                                                 |
-| `date`           | string               | Data da observação                                                                               |
-| `scan`           | int                  | Número de varredura                                                                              |
+| `date`           | string               | A data de referência da observação para esta fonte expressa no formato padrão ISO.                                                                              |
+| `scan`           | int                  | O número da verificação noturna em que a origem foi detectada.                                                                             |
 | `glon`           | float                | Longitude galáctica                                                                              |
 | `glat`           | float                | Latitude galáctica                                                                               |
 | `x_scan`         | float                | Varredura cruzada                                                                                |
@@ -154,9 +155,3 @@ Here you can add more information about the process of download and ingestion an
 
 - https://dblinea.readthedocs.io/en/latest/quickstart.html
 
-
-
-
-```python
-
-```
