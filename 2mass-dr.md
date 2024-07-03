@@ -124,11 +124,11 @@ O projeto 2MASS resultou na criação de um Catálogo de Fontes Pontuais com 470
 
 ### Download e Ingestão de Dados
 
-*If necessary you can add more information in this section eg.: who, when, number of the ticket, source url, tools used to download, md5sum, etc*
+Na tabela a seguir, são detalhados os períodos de tempo necessários para baixar arquivos 2Mass PSC e ingerir dados em nosso banco de dados.
 
 | Action | Time  |
 |---|---|
-| Download | xx:xx:xx |
+| Download* | 02:45:00 |
 | Ingestion | xx:xx:xx |
 | Indexing* | xx:xx:xx | 
 
@@ -138,8 +138,7 @@ O projeto 2MASS resultou na criação de um Catálogo de Fontes Pontuais com 470
 | Number of columns | nnnn | 
 
 
-\* time to indexing 12 columns including `ra` and `dec` with spatial q3c index.
-
+\* O tamanho total do download foi de aproximadamente 43GB.
 Here you can add more information about the process of download and ingestion and how they were done, eg: scripts, commands, etc. The scripts can be added in the idac_dw repository.
 
 ## Referências 
